@@ -1,0 +1,54 @@
+.heading {
+  text-align: center;
+  font-weight: 100;
+}
+
+#gameScreen {
+  display: flex;
+}
+
+#gameTools {
+  display: flex-end;
+  width: 10px;
+}
+
+button {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 100px;
+}
+
+#dice {
+  width: 200px;
+  height: 160px;
+  padding-left: 10px;
+}
+
+#gameZone {
+  margin-top: 0px auto;
+  border-collapse: collapse;
+  height: 600px;
+}
+
+.cell {
+  width: 60px;
+  height: 5px;
+}
+
+.row {
+  height: 70px;
+}
+
+#text {
+  padding-left: 100px;
+  font-weight: 100;
+}
+
+.textbox {
+  width: 150px;
+  height: 30px;
+  margin-bottom: 30px;
+  margin-left: 25px;
+}
