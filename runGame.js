@@ -1,33 +1,29 @@
-const createEvenRowCells = (newRow, row) => {
-  for (let cell = 10; cell >= 1; cell--) {
-    const newCell = document.createElement('td');
-    newCell.className = 'cell';
-    newCell.id = (row - 1) * 10 + cell;
-    newCell.innerText = (row - 1) * 10 + cell;
-    newRow.appendChild(newCell);
-  }
+const range = (start, end) => {
+  if (start == end) return [start];
+  if (start < end) return [start, ...range(start + 1, end)];
+  return [start, ...range(start - 1, end)];
 };
 
-const createOddRowCells = (newRow, row) => {
-  for (let cell = 1; cell <= 10; cell++) {
-    const newCell = document.createElement('td');
-    newCell.className = 'cell';
-    newCell.id = (row - 1) * 10 + cell;
-    newCell.innerText = (row - 1) * 10 + cell;
-    newRow.appendChild(newCell);
-  }
+const createCell = (cellId, rowId, newRow) => {
+  const newCell = document.createElement('td');
+  newCell.className = 'cell';
+  newCell.id = (rowId - 1) * 10 + cellId;
+  newCell.innerText = (rowId - 1) * 10 + cellId;
+  newRow.appendChild(newCell);
+};
+
+const createRow = (rowId, grid) => {
+  const newRow = document.createElement('tr');
+  newRow.className = 'row';
+  grid.appendChild(newRow);
+  const cellsOrder = rowId % 2 != 0 ? range(1, 10) : range(10, 1);
+  cellsOrder.forEach(cellId => createCell(cellId, rowId, newRow));
 };
 
 const createGrid = () => {
   const grid = document.getElementById('gameZone');
-  for (let row = 10; row >= 1; row--) {
-    const newRow = document.createElement('tr');
-    newRow.className = 'row';
-    grid.appendChild(newRow);
-    const createRowElements =
-      row % 2 == 0 ? createEvenRowCells : createOddRowCells;
-    createRowElements(newRow, row);
-  }
+  const rowsOrder = range(10, 1);
+  rowsOrder.forEach(rowId => createRow(rowId, grid));
 };
 
 const getElement = id => document.getElementById(id);
