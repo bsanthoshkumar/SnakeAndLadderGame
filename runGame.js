@@ -52,7 +52,6 @@ const changeDice = diceValue => {
 const changePlayerPosition = game => {
   game.changePlayerList();
   const diceValue = game.rollDice;
-  console.log(diceValue);
   changeDice(diceValue);
   game.updatePlayerPosition(diceValue);
   const { coin, previousPosition, currentPosition } = game.updatedPositions;
@@ -94,9 +93,8 @@ const printTextBoxes = (game, noOfPlayers) => {
   const gameTools = getElement('gameTools');
   gameTools.removeChild(getElement('2Player'));
   gameTools.removeChild(getElement('3Player'));
-  for (let index = 1; index <= noOfPlayers; index++) {
-    createTextBox(gameTools, index);
-  }
+  const playersOrder = range(1, noOfPlayers);
+  playersOrder.forEach(playerIndex => createTextBox(gameTools, playerIndex));
   createStartButton(game, noOfPlayers);
 };
 

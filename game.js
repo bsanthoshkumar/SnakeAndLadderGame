@@ -16,7 +16,6 @@ class Game {
 
   changePlayerList() {
     this.currentPlayer = this.playerList.shift();
-    console.log(this.currentPlayer, this.playerList);
     this.playerList.push(this.currentPlayer);
   }
 
